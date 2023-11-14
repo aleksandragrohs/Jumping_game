@@ -5,20 +5,21 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     private Rigidbody rbCharacter;
-    private float jumpForce = 40f;
+    private float jumpForce = 12f;
     private float moveForce  = 2f;
     private bool bCollision = false;
     public Animator aCharacter;
+    private float gravityModifier = -25;
     // Start is called before the first frame update
     void Start()
     {
         rbCharacter = GetComponent<Rigidbody>();
         aCharacter = GetComponent<Animator>();
-        Physics.gravity = new Vector3(0, -14, 0);
+        Physics.gravity = new Vector3(0, gravityModifier, 0);
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
